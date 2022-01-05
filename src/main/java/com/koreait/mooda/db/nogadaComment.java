@@ -1,0 +1,37 @@
+package com.koreait.mooda.db;
+
+import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class nogadaComment {
+
+	public static void main(String[] args) {
+		String file = "C:/Users/bsu79/Desktop/nogadatxt/comment.txt";
+        Scanner sc;
+        Connection conn;
+        PreparedStatement pstmt;
+        String sql = "";
+        try {
+            sc = new Scanner(new FileInputStream(file));
+            while (sc.hasNextLine()) {            	
+                String[] reader = sc.nextLine().split(",");
+                conn = Dbconn.getConnection();
+                System.out.println(reader[0]);
+                if(conn != null){
+                    sql = "insert into tb_comment (c_useridx, c_didx, c_text) values (?,?,?)";
+                    pstmt = conn.prepareStatement(sql);
+                    pstmt.setString(1, reader[0]);
+                    pstmt.setString(2, reader[1]);
+                    pstmt.setString(3, reader[2]);
+                    pstmt.executeUpdate();
+                }
+            }
+            System.out.println("성공");
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+	}
+
+}

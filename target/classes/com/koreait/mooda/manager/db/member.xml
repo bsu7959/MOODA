@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Board로 이름을 사용하겠다! -->
+<mapper namespace="Member">
+
+	<resultMap type="com.koreait.mooda.manager.member.MemberDTO"
+		id="memberList">
+		<id column="m_idx" property="m_idx" />
+		<result column="m_userid" property="m_userid" />
+		<result column="m_userpw" property="m_userpw"/>
+		<result column="m_name" property="m_name" />
+		<result column="m_email" property="m_email" />
+		<result column="m_hp" property="m_hp" />
+		<result column="m_nickname" property="m_nickname" />
+		<result column="m_birth" property="m_birth" />
+		<result column="m_interest" property="m_interest" />
+		<result column="m_open" property="m_open" />
+		<result column="m_regdate" property="m_regdate" />
+		<result column="m_extramood1" property="m_extramood1" />
+		<result column="m_extramood2" property="m_extramood2" />
+		<result column="m_extramood3" property="m_extramood3" />
+		<result column="m_extramood4" property="m_extramood4" />
+		<result column="m_extramood5" property="m_extramood5" />
+		<result column="m_report" property="m_report"/>
+		<result column="m_fontsize" property="m_fontsize"/>
+		<result column="m_fontstyle" property="m_fontstyle"/>
+		<result column="m_background" property="m_background"/>
+	</resultMap>
+	
+	<!--tb_board에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+	<select id="list" resultMap="memberList">
+		select * from tb_member order by m_idx
+	</select>
+	
+	<!--  검색 -->
+	<select id="search" resultMap="memberList">
+		select * from tb_member where ${searchKey} like concat('%',#{searchValue},'%')
+	</select>
+	
+	<!-- view -->
+	<select id="view" resultType="com.koreait.mooda.manager.member.MemberDTO">
+		select * from tb_member where m_idx=#{m_idx}
+	</select>
+	
+	<!-- 신고글보기 -->
+	<select id="report" resultMap="memberList">
+		select * from tb_member where (m_report!=0);
+	</select>
+		
+	<!-- 정보수정 -->
+	<update id="edit" parameterType="map">
+		update tb_member set m_userid=#{m_userid}, m_userpw=#{m_userpw}, m_name=#{m_name}, m_email=#{m_email}, m_hp=#{m_hp}, m_nickname=#{m_nickname}, m_interest=#{m_interest}, m_birth=#{m_birth}, m_open=#{m_open}, m_regdate=#{m_regdate} where m_idx=#{m_idx}
+	</update>
+	
+	<!-- 회원 삭제 -->
+	<delete id="del">
+		delete from tb_member where m_idx=#{m_idx}
+	</delete>
+
+</mapper>
+	
+	

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Reply">
+	<resultMap id="reply" type="com.koreait.mooda.reply.ReplyDTO">
+		<id property="r_idx" column="r_idx"/>
+		<result property="r_useridx" column="r_useridx" />
+		<result property="r_cidx" column="r_cidx" />
+		<result property="r_text" column="r_text" />
+		<result property="r_regdate" column="r_regdate" />
+		<result property="r_report" column="r_report" />
+	</resultMap>
+ 
+	<select id="list" parameterType="map" resultMap="reply">
+		select * from tb_reply where r_cidx=#{r_cidx}
+	</select>
+	
+	<insert id="write" parameterType="map">
+		insert into tb_reply (r_useridx, r_cidx, r_text) values (#{r_useridx}, #{r_cidx}, #{r_text})
+	</insert>
+	
+	<update id="edit" parameterType="map">
+		update tb_reply set r_text=#{r_text} where r_idx=#{r_idx}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from tb_reply where r_idx=#{r_idx}
+	</delete>
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Diary로 이름을 사용하겠다! -->
+<mapper namespace="Reply">
+
+	<resultMap type="com.koreait.mooda.manager.reply.ReplyDTO"
+		id="replyList">
+		<id column="r_idx" property="r_idx" />
+		<result column="r_useridx" property="r_useridx" />
+		<result column="r_cidx" property="r_cidx" />
+		<result column="r_text" property="r_text" />
+		<result column="r_regdate" property="r_regdate" />
+		<result column="r_report" property="r_report"/>
+	</resultMap>
+	<!--tb_reply에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+	<select id="list" resultMap="replyList">
+		select * from tb_reply where r_cidx = ${r_cidx}
+	</select>
+	
+	<!-- 신고답글보기 -->
+	<select id="report" resultMap="replyList">
+		select * from tb_reply where r_report!=0;
+	</select>
+	
+	<!-- 답글 수정 -->
+	<update id="edit" parameterType="map">
+		update tb_reply set r_useridx=#{r_useridx}, r_cidx=#{r_cidx}, r_text=#{r_text}, r_regdate=#{r_regdate}, r_report=#{r_report} where r_idx=#{r_idx}
+	</update>
+	<!-- 답글 삭제 -->
+	<delete id="del">
+		delete from tb_reply where r_idx=#{r_idx}
+	</delete>
+</mapper>
+	
+	

@@ -1,0 +1,540 @@
+@font-face {
+    font-family: 'drfont_daraehand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/drfont_daraehand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+/*공통*/
+div {
+    box-sizing: border-box;
+    font-family: 'drfont_daraehand';
+}
+body {
+    text-align: center;
+}
+* {
+    padding: 0;
+    margin: 0;
+    background-color : #edede5;
+}
+input::placeholder {
+    font-family: 'drfont_daraehand';
+    color: rgb(134,134,115);
+}
+input[type="button"]::placeholder {
+    font-family: 'drfont_daraehand';
+}
+.clear::after {
+    clear: both;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.turnon {
+    display: block;
+}
+.turnoff {
+    display: none;
+}
+/*공통 끝*/
+.container {
+    width: 1400px;
+    display : inline-block;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+}
+
+.nav_bar {
+    float: right;
+    width: 40%;
+    height: 50px;
+}
+
+.main_box {
+    width: 100%;
+}
+
+.main_box>.menu1 {
+    width: 15%;
+    float: left;
+}
+
+.main_box>.menu1>.menu1_logo {
+    width: 185px;
+    height: 185px;
+}
+
+.main_box>.menu1>.menu1_logo>img {
+    width: 60%;
+    height: 60%;
+    position : relative;
+    top : 20%;
+    left : 20%;
+}
+
+.main_box>.menu1>.menu1_content {
+    width: 100%;
+    height: 700px;
+    padding-left : 30px;
+}
+.main_box>.menu1>.menu1_content > .menu1_content_tab{
+    font-size: 25px;
+    padding: 50px 0 0 15px;
+}
+
+.main_box>.content {
+    width: 70%;
+    float: left;
+    height: 950px;
+}
+
+.main_box>.content>.content_title {
+    width: 100%;
+    height: 185px;
+}
+
+.main_box>.content>.content_mainPage {
+    width: 100%;
+    height: 700px;
+}
+
+.menu2 {
+    width: 15%;
+    float: left;
+    height: 885px;
+}
+
+.menu2>.menu2_content {
+    width: 100%;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    margin-bottom: 20px;
+    border : 1px solid black;
+}
+
+
+
+
+/* main title */
+.content .content_title .year {
+    margin-top : 40px;
+    text-align : center;
+    font-size : 24px;
+}
+.content .content_title .month {
+    text-align : center;
+    font-size : 36px;
+    position : relative;
+    z-index : 2;
+    background : none;
+}
+.content .content_title .marker {
+    position : relative;
+    margin : 0 auto;
+    height : 30px;
+    width : 200px;
+    top : -24px;
+    background-color : violet;
+    z-index : 1;
+}
+
+
+
+
+.content .content_mainPage>div {
+    height : 110px;
+    border-top : 5px solid white;
+}
+.content .content_mainPage>div:nth-child(2) {
+    border-top : 5px solid #edede5;
+}
+.content .content_mainPage>div:first-child{
+    border : none;
+    height : 30px;
+}
+.content .content_mainPage>div:first-child div{
+    height : 30px;
+}
+.content .content_mainPage .day {
+    font-size : 24px;
+}
+.content .content_mainPage>div .sat{
+    color : blue;
+}
+.content .content_mainPage>div .sun{
+    color : red;
+}
+
+.content .content_mainPage>div>div {
+    float : left;
+    width : 14.28%;
+    text-align : center;
+    border : none;
+}
+
+.content .content_mainPage div .right_border {
+    border-right : 5px solid white;
+}
+
+.content .content_mainPage>div>div .date {
+    height : 25px;
+    border : none;
+    background-color : #dcdcd1;
+}
+.content .content_mainPage>div>div .emotion {
+    height : 80px;
+    border : none;
+    background-color : #dcdcd1;
+}
+
+
+.main_box .menu2 .menu2_content .prev_month {
+    margin-top : 300px;
+    margin-left : 30%;
+    width: 0px;
+    height: 0px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid #dcdcd1;
+}
+.main_box .menu2 .menu2_content .next_month { 
+    margin-left : 30%;
+    width: 0px;
+    height: 0px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 25px solid #dcdcd1;
+}
+.main_box .menu2 .menu2_content .mini_calender {
+    border : 1px solid black;
+    margin : 40px 0;
+    height : 200px;
+}
+
+/*기본설정 페이지*/
+.content_mainPage .setting_container {
+    width: 100%;
+    margin: 55px 0 0 15%;
+}
+.content_mainPage .setting_container .setting_box {
+    float: none;
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 25px;
+    width: 100%;
+}
+.content_mainPage .setting_container .setting_box > * {
+    float: left;
+}
+.content_mainPage .setting_container .setting_box h3 {
+    font-weight: lighter;
+    width: 35%;
+}
+.content_mainPage .setting_container .setting_box p {
+    margin-right: 5%;
+}
+.content_mainPage .setting_container .setting_public p input[type="radio"] {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.content_mainPage .setting_container .custom_emotion > div {
+    display: inline-block;
+}
+.content_mainPage .setting_container .custom_emotion .custom_emotion_box {
+    width: 35%;
+}
+.content_mainPage .setting_container .custom_emotion .custom_emotion_box .setting_title { width:100%; }
+
+.content_mainPage .setting_container .custom_emotion .custom_emotion_content .emotion_box {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+}
+
+.content_mainPage .setting_container .custom_emotion .custom_emotion_content .emotion_box p {
+    height: 30px;
+}
+.setting_container .custom_emotion .custom_emotion_btn .btn {
+    display: inline-block;
+    font-size: 23px;
+    line-height: 40px;
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    color: rgb(168,168,168);
+    border: 3px solid rgb(168,168,168);
+    border-radius: 20px; 
+}
+.popup_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+}
+.popup_background > div {
+    position: absolute;
+    width: 420px;
+    height: 240px;
+    top: 40%;
+    left: 40%;
+}
+.popup_background > div .custom_text {
+    position: absolute;
+    top: 130px;
+    left: 60px;
+    font-size: 25px;
+    text-align: left;
+}
+.popup_background .custom_add_popUp .closebtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+}
+.popup_background .custom_add_popUp .inputbox {
+    position: absolute;
+    top: 180px;
+    left: 60px;
+    width: 150px;
+    border: none;
+    font-size: 25px;
+}
+.popup_background .custom_add_popUp .emotionadd_btn {
+    position: absolute;
+    top: 180px;
+    right: 60px;
+    font-size: 23px;
+    line-height: 35px;
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    border: 3px solid rgb(168,168,168);
+    border-radius: 20px;
+}
+.popup_background .custom_add_popUp .file_upload {
+    position: absolute;
+    top: 70px;
+    right: 60px;
+    font-size: 23px;
+    line-height: 35px;
+    text-align: center;
+    width: 94px;
+    height: 34px;
+    border: 3px solid rgb(168,168,168);
+    border-radius: 20px;
+}
+.popup_background .custom_add_popUp .file_name {
+    position: absolute;
+    top: 70px;
+    left: 60px;
+    font-size: 23px;
+    line-height: 35px;
+    text-align: left;
+    height: 34px;
+    color: rgb(134,134,115);
+}
+.popup_background .custom_del_popUp {
+    font-size: 25px;
+}
+.popup_background .custom_del_popUp .popup_inner {
+    position: relative;
+    top: 60px;
+}
+.popup_background .custom_del_popUp span {
+    position: relative;
+    top: 100px;
+    margin: 0 40px;
+}
+/* font setting */
+.content .content_mainPage .font_size, .content .content_mainPage .font_style {
+    width: 100%;
+    margin: 55px 0 0 15%;
+}
+.content .content_mainPage .setting_title {
+    text-align: left;
+    font-size: 25px;
+    font-weight: lighter;
+}
+.content .content_mainPage .font_size .font_size_bar {
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+    text-align: left;
+}
+.content .content_mainPage .font_style .font_box {
+    text-align: left;
+    width: 100%;
+    height: 450px;
+    overflow: scroll;
+    margin-top: 30px;
+}
+.content .content_mainPage .font_style .font_box .font_box_style {
+    position: relative;
+}
+.content .content_mainPage .font_style .font_box .font_box_style p {
+    margin-top: 60px;
+    text-align: center;
+}
+.content .content_mainPage .font_style .font_box .font_box_style span:first-child {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+}
+.content .content_mainPage .font_style .font_box .font_box_style span:nth-child(2) {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+}
+.content .content_mainPage .font_style .font_box::-webkit-scrollbar {
+    display: none;
+}
+.content .content_mainPage .font_style .font_box > div {
+    float: left;
+    width: 250px;
+    height: 180px;
+    margin: 0px 60px 30px 0px;
+    border: 3px solid rgb(168,168,168);
+}
+.highlighted {
+    border: 8px solid rgb(128, 128, 128) !important;
+}
+/* 배경 설정 */
+.content .content_mainPage .background_style {
+    width: 100%;
+    margin: 55px 0 0 15%;
+}
+.content .content_mainPage .background_style .background_box {
+    text-align: left;
+    width: 100%;
+    height: 450px;
+    overflow: scroll;
+    margin-top: 30px;
+}
+.content .content_mainPage .background_style .background_box::-webkit-scrollbar {
+    display: none;
+}
+.content .content_mainPage .background_style .background_box > div {
+    float: left;
+    width: 250px;
+    height: 180px;
+    margin: 0px 60px 30px 0px;
+    border: 3px solid rgb(168,168,168);
+}
+.content .content_mainPage .background_box_style span {
+    margin: 10px 0px 0px 10px;
+    font-size: 20px;
+}
+.content .content_mainPage .background_box_style span ins {
+    font-size: 28px;
+}
+.content .content_mainPage .background_box_style .bg_img {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+}
+.content .content_mainPage .background_box_style p {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 22px;
+}
+/* 통계 */
+.content .content_mainPage .stats_container {
+    text-align: left;
+    width: 100%;
+    margin: 55px 0 0 20%;
+}
+.content .content_mainPage .stats_container .scroll_box {
+    width: 100%;
+    height: 500px;
+    margin-top: 50px;
+    text-align: left;
+    overflow: scroll;
+}
+.content .content_mainPage .stats_container .scroll_box::-webkit-scrollbar {
+    display: none;
+}
+.content .content_mainPage .stats_container h2 {
+    font-weight: lighter;
+}
+.content .content_mainPage .stats_container p {
+    font-size: 23px;
+    margin-top: 20px;
+}
+.content .content_mainPage .stats_container ul {
+    margin: 0 0 0 30px;
+    list-style: none;
+}
+.content .content_mainPage .stats_container li {
+    margin-bottom: 20px;
+}
+.content .content_mainPage .stats_container li > * {
+    display: inline-block;
+}
+.content .content_mainPage .stats_container .stats_img {
+    width: 100px;
+    height: 100px;
+}
+.content .content_mainPage .stats_container .scroll_box p {
+    font-size: 25px;
+    line-height: 25px;
+    height: 25px;
+    position: relative;
+    left: 20px;
+    bottom: 37.5px;
+}
+.content .content_mainPage .stats_container .stats_bar {
+    height: 25px;
+    border-radius: 25px;
+    margin: 0px 0px 37.5px 30px;
+}
+/* 통계 바 크기 width로 조절(현재 1당 50px)*/
+#mood1 {
+    width: 400px;
+    background-color: rgb(68,102,157);
+}
+#mood2 {
+    width: 300px;
+    background-color: rgb(60,205,124);
+}
+#mood3 {
+    width: 150px;
+    background-color: rgb(255,214,93);
+}
+#mood4 {
+    width: 250px;
+    background-color: rgb(255,78,98);
+}
+#mood5 {
+    width: 200px;
+    background-color: rgb(196,168,199);
+}
+#mood6 {
+    width: 50px;
+    background-color: rgb(129,171,205);
+}
+#mood7 {
+    width: 550px;
+    background-color: rgb(185,197,192);
+}
+#mood8 {
+    width: 50px;
+    background-color: rgb(255,163,64);
+}
+#mood9 {
+    width: 0px;
+    background-color: rgb(255,172,166);
+}

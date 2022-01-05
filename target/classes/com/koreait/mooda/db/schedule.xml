@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Schedule">
+  <resultMap id="schedule" type="com.koreait.mooda.schedule.ScheduleDTO">
+  	<id property="s_idx" column="s_idx"/>
+  	<result property="s_useridx" column="s_useridx" />
+  	<result property="s_alarm" column="s_alarm" />
+  	<result property="s_date" column="s_date" />
+  	<result property="s_time" column="s_time" />
+  	<result property="s_content" column="s_content" />
+  	<result property="s_latitude" column="s_latitude" />
+  	<result property="s_longitude" column="s_longitude" />
+  </resultMap>
+  <select id="list" parameterType="map" resultMap="schedule">
+  	select * from tb_schedule where s_useridx=${s_useridx} and s_date like '${s_date}%'
+  </select>
+  <select id="selectSchedule" parameterType="map" resultMap="schedule">
+  	select * from tb_schedule where s_date=#{s_date} and s_useridx=#{s_useridx}
+  </select>
+  <insert id="write" parameterType="map">
+  	insert into tb_schedule (s_useridx, s_alarm, s_date, s_time, s_content, s_latitude, s_longitude) values 
+  	(#{s_useridx}, #{s_alarm}, #{s_date}, #{s_time}, #{s_content}, #{s_latitude}, #{s_longitude})
+  </insert>
+  <delete id="delete" parameterType="String">
+  	delete from tb_schedule where s_idx=#{s_idx}
+  </delete>
+  <update id="edit" parameterType="map">
+  	update tb_schdule set s_alarm=#{s_alarm}, s_date=#{s_date}, s_time=#{s_time}, s_content=#{s_content}, 
+  	s_latitude=#{s_latitude}, s_longitude=#{s_longitude} where s_idx=#{s_idx}
+  </update>
+  
+</mapper>

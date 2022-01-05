@@ -1,0 +1,448 @@
+/* 우측 전체 글자 */
+
+
+/* 공통 */
+
+div {
+    box-sizing: border-box;
+    border: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    background-color: #edede5;
+    box-sizing: border-box;
+}
+input::placeholder {
+    color: rgb(134,134,115);
+}
+input[type="text"], input[type="password"] {
+    border: 2px solid rgb(220,220,209);
+    outline: none;
+    padding: 10px;
+}
+.clear::after {
+    clear: both;
+}
+.turnoff {
+	display: none;
+}
+.turnon {
+	display: block;
+}
+.container {
+    border: none;
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    display: none;
+    width: 100%;
+    height: 50px;
+}
+
+.nav_bar {
+    display: none;
+    float: right;
+    width: 40%;
+    height: 50px;
+}
+
+.main_box {
+    border: none;
+    width: 100%;
+}
+
+.main_box>.menu1 {
+    border: none;
+    width: 15%;
+    float: left;
+}
+
+.main_box>.menu1>.menu1_logo {
+    border: none;
+    /* display: none; */
+    width: 100%;
+    height: 185px;
+}
+
+.main_box>.menu1>.menu1_logo>img {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.main_box>.menu1>.menu1_content {
+    display: none;
+    width: 100%;
+    height: 700px;
+}
+
+.main_box>.menu1>.menu1_content>.menu1_content_tab {
+    border: none;
+    font-size: 25px;
+    padding: 50px 0 0 15px;
+}
+
+.main_box>.content {
+    border: none;
+    width: 70%;
+    float: left;
+    height: 885px;
+}
+
+.main_box>.content>.content_title {
+    border: none;
+    width: 100%;
+    height: 185px;
+}
+
+.main_box>.content>.content_mainPage {
+    border: none;
+    display: flex;
+    width: 100%;
+    height: 885px;
+}
+
+.menu2 {
+    border: none;
+    width: 15%;
+    float: left;
+    height: 885px;
+}
+
+.menu2>.menu2_content {
+    border: none;
+    width: 100%;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 추가 공통 스타일 */
+
+li {
+    list-style: none;
+}
+/* 좌측 메인 화면 */
+.main_leftWrap {
+    margin-top: 200px;
+    margin-left: 100px;
+    padding-left: 50px;
+    padding-top: 60px;
+    /* 임시로 잡아 놓은 높이 */
+    height: 500px;
+
+}
+
+.main_left{
+    margin-right: 30px;
+}
+
+.frontLogo {
+    /* 임시 사이즈 조정 */
+    width: 200px;
+    height: 200px;
+    /* border: 1px solid red; */
+    
+}
+.frontLogo > img{
+    width: 100%;
+}
+
+.frontTop{
+    font-weight: bold;
+    font-size: 58px;
+}
+.frontMiddle{
+    font-size: 30px;
+    font-weight: lighter;
+    
+}
+.frontBot{
+    font-size: 30px;
+    color: rgb(118, 118, 118);
+    font-weight: lighter;
+}
+
+/* 좌우분리 */
+.main_leftWrap {
+    width: 51%;
+}
+
+.main_rightWrap {
+    width: 50%;
+
+}
+
+.main_rightWrap{
+    margin-top: 200px;
+    padding-right: 50px;
+    padding-top: 60px;
+    /* 임시로 잡아 놓은 높이 */
+    height: 500px;
+
+}
+
+/* -------로그인 페이지 ------- */
+
+/* 우측 로그인 칸 */
+
+.mainRwrap{
+    margin-left: 30px;
+}
+
+/* 전체 정렬 */
+.main_rightWrap{
+    text-align: center;
+    width: 400px;
+}
+/* 로그인 입력칸 */
+.logId > .idText, .pwText {
+    width: 100%;
+    border-radius: 7px;
+    height: 40px;
+    margin-top: 8px;
+    border: 2px solid rgb(220,220,209);
+    outline: none;
+}
+
+
+/* 로그인 버튼  */
+.logBtn{
+    width: 100%;
+}
+.logBtn > .lBtn{
+    
+    width: 100%;
+    border-radius: 7px;
+    border: none;
+    height: 40px;
+    background-color: rgb(220,220,209);
+    color:  rgb(118, 118, 118);
+    font-size: 30px;
+    font-weight: bolder;
+    margin-top: 8px;
+}
+
+/* sns버튼 */
+.snsBtn{
+    margin-top: 30px;
+}
+
+.snsBtn .faceBtn, .kktlBtn{
+    width: 80%;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.faceBtn{
+    
+    border-radius: 7px;
+    border: none;
+    height: 40px;
+    background-color: rgb(58, 91, 152);
+    color: white;
+}
+
+.kktlBtn{
+    
+    border-radius: 7px;
+    border: none;
+    height: 40px;
+    background-color: rgb(255, 205, 0);
+
+    color: white;
+}
+/* 아이디 비번찾기 버튼 */
+.findBtn{
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+}
+
+.findBtn .idFind{
+    color:  rgb(118, 118, 118);
+    font-size: 15px;
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+/* 회원 가입 버튼 */
+.mainRBot{
+    margin-top: 30px;
+}
+
+.mainRBot > a > input{
+    
+    width: 100%;
+    border-radius: 7px;
+    border: none;
+    height: 40px;
+    background-color: rgb(220,220,209);
+    color:  rgb(118, 118, 118);
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+
+
+
+/* -------------회원가입-------------------- */
+/* 기입란 */
+.main_rightWrap .regCont{
+    width: 100%;
+}
+
+.main_rightWrap .regCont .regInput input{
+    margin-top: 5px;
+    border: 2px solid rgb(170, 170, 170);
+    border-radius: 7px;
+    width: 100%;
+    height: 40px;
+}
+
+input#signpw_re{
+    width: 100%;
+}
+/* 관심사  */
+li.regLikeTitle{
+    text-align: left;
+    color: rgb(170, 170, 170);
+}
+li.regLikeselect{
+    text-align: left;
+    color: rgb(170, 170, 170);
+}
+.like_btn + input[type="checkbox"]{
+    display: none;
+}
+.like_btn {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: rgb(168,168,168);
+    border: 3px solid rgb(168,168,168);
+    border-radius: 20px; 
+    padding: 0.5px 5px;
+    margin-bottom: 5px;
+}
+.like_checked {
+	border: 3px solid rgb(128,128,128) !important;
+	color: rgb(128,128,128) !important;
+}
+.popup_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+}
+.popup_background > div {
+    position: absolute;
+    width: 420px;
+    height: 500px;
+    top: 40%;
+    left: 40%;
+}
+.closebtn {
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+}
+.closebtn img {
+	width: 100%;
+}
+.interest_content {
+	position: absolute;
+	padding: 0 5px;
+	top: 50px;
+}
+/* 공개설정 */
+li.con_tit{
+    color: rgb(170, 170, 170);
+    text-align: left;
+}
+li.con_cont{
+    text-align: center;
+    color: rgb(170, 170, 170);
+}
+
+
+/* 약관 */
+.yakgwan{
+    color: rgb(170, 170, 170);
+    text-align: center;
+    font-size:x-small;
+}
+
+/* 버튼 */
+
+.regBtn input[type="submit"] {
+    margin-top : 5px;
+    border-radius: 7px;
+    border: none;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(220,220,209);
+    color:  rgb(118, 118, 118);
+}
+
+
+/* -------회원 정보 수정 ------- */
+
+.main_rightWrap .regFixCont .regFixInput input{
+    border: 2px solid rgb(170, 170, 170);
+    border-radius: 7px;
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+}
+
+input#userpw_re{
+    width: 70%;
+}
+/* 수정 버튼 */
+input#change{
+    margin-left: 10px;
+    border: none;
+    background-color: rgb(220,220,209);
+    color:  rgb(118, 118, 118);
+    width : 27%
+}
+
+/* 버튼 */
+.regBtn input[type="button"] {
+    margin-top : 5px;
+    border-radius: 7px;
+    border: none;
+    height: 40px;
+    width: 49%;
+    background-color: rgb(220,220,209);
+    color:  rgb(118, 118, 118);
+    float : left;
+}
+.regBtn input[type="button"]:first-child {
+    margin-right : 1%;
+}
+.regBtn input[type="button"]:last-child {
+    margin-left : 1%;
+}
+
+/* 수정 취소 버튼 */
+
+#toc-content{
+    display: none;
+}  

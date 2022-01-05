@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<resultMap type="com.koreait.mooda.member.MemberDTO" id="member"> 
+		<result column="m_idx" property="m_idx"/> 
+		<result column="m_userid" property="m_userid"/> 
+		<result column="m_userpw" property="m_userpw"/>
+		<result column="m_name" property="m_name"/> 
+		<result column="m_email" property="m_email"/> 
+		<result column="m_hp" property="m_hp"/> 
+		<result column="m_nickname" property="m_nickname"/> 
+		<result column="m_birth" property="m_birth"/> 
+		<result column="m_open" property="m_open"/> 
+		<result column="m_regdate" property="m_regdate"/>
+		<result column="m_extramood1" property="m_extramood1"/>
+		<result column="m_extramood2" property="m_extramood2"/>
+		<result column="m_extramood3" property="m_extramood3"/>
+		<result column="m_extramood4" property="m_extramood4"/>
+		<result column="m_extramood5" property="m_extramood5"/> 
+		<result column="m_report" property="m_report"/>
+	</resultMap>
+	<insert id="join" parameterType="map">
+  		insert into tb_member (m_userid, m_userpw, m_name, m_email, m_hp, m_nickname, m_birth, m_interest, m_open)
+  		values(#{m_userid}, #{m_userpw}, #{m_name}, #{m_email}, #{m_hp}, #{m_nickname}, #{m_birth}, #{m_interest}, #{m_open})
+  	</insert>
+  	<select id="getOne" parameterType="String" resultMap="member">
+  		select * from tb_member where m_idx=#{m_idx}
+  	</select>
+  	<select id="list" resultMap="member">
+		select * from tb_member order by m_idx;
+	</select>
+	<select id="login" parameterType="map" resultType="map">
+  		select m_idx, m_name, m_font_style, m_font_size, m_background, m_open from tb_member where m_userid=#{m_userid} and m_userpw=#{m_userpw}
+  	</select>
+  	<update id="fontSize" parameterType="map">
+  		update tb_member set m_font_size=#{fontSize} where m_idx=#{m_idx}
+  	</update>
+  	<update id="fontStyle" parameterType="map">
+  		update tb_member set m_font_style=#{fontStyle} where m_idx=#{m_idx}
+  	</update>
+  	<update id="background" parameterType="map">
+  		update tb_member set m_background=#{background} where m_idx=#{m_idx}
+  	</update>
+  	<update id="modify" parameterType="map">
+  		update tb_member set m_userpw=#{m_userpw}, m_email=#{m_email}, m_hp=#{m_hp}, m_nickname=#{m_nickname}, m_birth=#{m_birth}, m_interest=#{m_interest}, m_open=#{m_open} where m_idx=#{m_idx}
+  	</update>
+  	<select id="following" parameterType="String" resultType="int">
+  		select f_targetidx from tb_following where f_useridx=#{m_idx}
+  	</select>
+  	<select id="followCheck" parameterType="map" resultType="int">
+  		select count(f_idx) from tb_following where f_useridx=#{m_idx} and f_targetidx=#{d_useridx}
+  	</select>
+  	<insert id="follow" parameterType="map">
+  		insert into tb_following (f_useridx, f_targetidx) values(#{m_idx}, #{d_useridx})
+  	</insert>
+  	<delete id="unfollow" parameterType="map">
+  		delete from tb_following where f_useridx=#{m_idx} and f_targetidx=#{d_useridx}
+  	</delete>
+  	<select id="selectName" parameterType="int" resultType="String">
+  		select m_nickname from tb_member where m_idx=#{m_idx}
+  	</select>
+  	<update id="report" parameterType="String">
+  		update tb_member set m_report = m_report+1 where m_idx=#{d_useridx}
+  	</update>
+</mapper>

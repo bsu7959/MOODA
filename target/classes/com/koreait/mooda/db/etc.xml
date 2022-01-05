@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Etc로 이름을 사용하겠다! -->
+<mapper namespace="Etc">
+
+	<resultMap type="com.koreait.mooda.etc.EtcDTO"
+		id="etcList">
+		<result column="e_fontsize" property="e_fontsize" />
+		<result column="e_fontstyle" property="e_fontstyle" />
+		<result column="e_background" property="e_background" />
+		<result column="e_background" property="e_background" />
+
+	</resultMap>
+	<!--tb_etc에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+	<select id="list" resultMap="etcList">
+		select * from tb_etc;
+	</select>
+	<select id="fontStyle" resultType="String">
+		select e_fontstyle from tb_etc
+	</select>
+	<select id="background" resultType="String">
+		select e_background from tb_etc 
+	</select>
+</mapper>
+	
+	

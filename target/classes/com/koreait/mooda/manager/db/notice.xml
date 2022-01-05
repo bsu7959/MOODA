@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Board로 이름을 사용하겠다! -->
+<!-- try catch  , result map(결과)를 저형태로 갖고오세요 select * from tb_member; -->
+<mapper namespace="Notice">
+
+   <resultMap type="com.koreait.mooda.manager.notice.NoticeDTO"
+      id="noticeList">
+      <id column="n_idx" property="n_idx" />
+      <result column="n_title" property="n_title" />
+      <result column="n_writer" property="n_writer" />
+      <result column="n_date" property="n_date" />
+      <result column="n_hit" property="n_hit" />
+      <result column="n_content" property="n_content" />
+      
+      
+   </resultMap>
+   <!--tb_board에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+   <!-- 리스트에서 idx, 제목, 작성자이름(작성자id), 조회수, 좋아요, 등록일 보여줌 -->
+   <select id="list" resultMap="noticeList"> 
+      select * from tb_notice order by n_idx desc
+   </select>
+   <select id="search" resultMap="noticeList">
+   select * from tb_notice where n_title like CONCAT('%', #{search_value}, '%') or n_content like CONCAT('%', #{search_value}, '%')</select>
+   
+   <!-- 조회수 -->
+   <update id="hit" parameterType="String">
+   	update tb_notice set n_hit = n_hit+1 where n_idx=#{n_idx}
+   </update>
+   
+   <select id="view" parameterType="String" resultMap="noticeList">
+      select * from tb_notice where n_idx=#{n_idx};
+   </select>
+   <!-- 글쓰기 -->
+   <insert id="write" parameterType="map">
+   		insert into tb_notice (n_writer,n_title,n_content) values (#{n_writer},#{n_title},#{n_content})
+   </insert>
+	
+	<update id="edit" parameterType="map">
+	update tb_notice set n_title =#{n_title}, n_content=#{n_content} where n_idx = #{n_idx}
+	</update>
+   <!--  삭제 -->
+   <delete id="n_del">
+      delete from tb_notice where n_idx=#{n_idx}
+   </delete>
+   
+</mapper>
+   
+   

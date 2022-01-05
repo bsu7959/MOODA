@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Report">
+  	<select id="reportCheck" parameterType="map" resultType="int">
+		select count(r_idx) from tb_report where r_didx=#{d_idx} and r_useridx=#{d_useridx}
+	</select>
+	
+	<insert id="reportAdd" parameterType="map">
+		insert into tb_report(r_useridx, r_didx) values(#{d_useridx}, #{d_idx})
+	</insert>
+
+  	<update id="reportUser" parameterType="String">
+  		update tb_member set m_report = m_report+1 where m_idx=#{d_useridx}
+  	</update>
+
+	<update id="reportDiary" parameterType="String">
+		update tb_diary set d_report = d_report+1 where d_idx=#{d_idx}
+	</update>
+</mapper>

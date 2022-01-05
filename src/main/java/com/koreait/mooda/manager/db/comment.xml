@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Comment로 이름을 사용하겠다! -->
+<mapper namespace="Comment">
+
+	<resultMap type="com.koreait.mooda.manager.comment.CommentDTO"
+		id="commentList">
+		<id column="c_idx" property="c_idx" />
+		<result column="c_useridx" property="c_useridx" />
+		<result column="c_didx" property="c_didx" />
+		<result column="c_text" property="c_text" />
+		<result column="c_regdate" property="c_regdate" />
+		<result column="c_report" property="c_report"/>
+		
+	</resultMap>
+	<!--tb_comment에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+	<select id="list" resultMap="commentList">
+		select * from tb_comment order by c_idx;
+	</select>
+	
+	<!-- 검색 -->
+	<select id="search" resultMap="commentList">
+		select * from tb_comment where ${searchKey} like concat('%',#{searchValue},'%')
+	</select>
+	
+		
+	<!-- 신고글보기 -->
+	<select id="report" resultMap="commentList">
+		select * from tb_comment where c_report!=0;
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="edit" parameterType="map">
+		update tb_comment set c_useridx=#{c_useridx}, c_didx=#{c_didx}, c_text=#{c_text}, c_regdate=#{c_regdate}, c_report=#{c_report} where c_idx=#{c_idx}
+	</update>
+	<!-- 댓글 삭제 -->
+	<delete id="del">
+		delete from tb_comment where c_idx=#{c_idx}
+	</delete>
+</mapper>
+	
+	

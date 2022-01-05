@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Moodcount">
+
+	<resultMap type="com.koreait.mooda.moodcount.moodCountDTO"
+		id="moodList">
+		<result column="moodcount1" property="moodcount1" />
+		<result column="moodcount2" property="moodcount2" />
+		<result column="moodcount3" property="moodcount3" />
+		<result column="moodcount4" property="moodcount4" />
+		<result column="moodcount5" property="moodcount5" />
+		<result column="moodcount6" property="moodcount6" />
+		<result column="moodcount7" property="moodcount7" />
+		<result column="moodcount8" property="moodcount8" />
+		<result column="moodcount9" property="moodcount9" />
+	</resultMap>
+
+
+	<select id="moodcount" parameterType="String" resultMap="moodList">
+		select count(case when d_mood='1' THEN 1 END) as moodcount1,
+		count(case when d_mood='2' THEN 1 END) as moodcount2,
+		count(case when d_mood='3' THEN 1 END) as moodcount3,
+		count(case when d_mood='4' THEN 1 END) as moodcount4,
+		count(case when d_mood='5' THEN 1 END) as moodcount5,
+		count(case when d_mood='6' THEN 1 END) as moodcount6,
+		count(case when d_mood='7' THEN 1 END) as moodcount7,
+		count(case when d_mood='8' THEN 1 END) as moodcount8,
+		count(case when d_mood='9' THEN 1 END) as moodcount9 From tb_diary where d_useridx=#{m_idx};
+	</select>
+	
+	<select id="moodsearch" parameterType="String" resultMap="moodList">
+		select count(case when d_mood='1' THEN 1 END) as moodcount1,
+		count(case when d_mood='2' THEN 1 END) as moodcount2,
+		count(case when d_mood='3' THEN 1 END) as moodcount3,
+		count(case when d_mood='4' THEN 1 END) as moodcount4,
+		count(case when d_mood='5' THEN 1 END) as moodcount5,
+		count(case when d_mood='6' THEN 1 END) as moodcount6,
+		count(case when d_mood='7' THEN 1 END) as moodcount7,
+		count(case when d_mood='8' THEN 1 END) as moodcount8,
+		count(case when d_mood='9' THEN 1 END) as moodcount9 From tb_diary where d_useridx=#{m_idx} and d_regdate like concat(#{year},'-',#{month},'%');
+	</select>
+
+
+</mapper>

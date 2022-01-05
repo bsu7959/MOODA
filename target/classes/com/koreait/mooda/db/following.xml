@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Following로 이름을 사용하겠다! -->
+<mapper namespace="Following">
+
+	<resultMap type="com.koreait.mooda.following.FollowingDTO"
+		id="followingList">
+		<id column="f_idx" property="f_idx" />
+		<result column="f_useridx" property="f_useridx" />
+		<result column="f_targetidx" property="f_targetidx" />
+		<result column="f_regdate" property="f_regdate" />
+	</resultMap>
+	<!--tb_diary에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+	<select id="list" resultMap="followingList">
+		select * from tb_following order by f_idx;
+	</select>
+</mapper>
+	
+	

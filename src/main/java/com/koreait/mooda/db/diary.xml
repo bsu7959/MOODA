@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 클래스에서 Diary로 이름을 사용하겠다! -->
+<mapper namespace="Diary">
+
+	<resultMap type="com.koreait.mooda.diary.DiaryDTO"
+		id="diaryList">
+		<id column="d_idx" property="d_idx" />
+		<result column="d_useridx" property="d_useridx" />
+		<result column="d_mood" property="d_mood" />
+		<result column="d_regdate" property="d_regdate" />
+		<result column="d_content" property="d_content" />
+		<result column="d_open" property="d_open" />
+		<result column="d_sticker" property="d_sticker" />
+		<result column="d_img" property="d_img" />
+		<result column="d_title" property="d_title" />
+		<result column="d_latitude" property="d_latitude" />
+		<result column="d_longitude" property="d_longitude" />
+		<result column="d_report" property="d_report"/>
+	</resultMap>
+	<!--tb_diary에서 각 dto 객체들을 모두 담은 arrayList형태로 반환해주면됨 -->
+	<select id="list" parameterType="map" resultMap="diaryList">
+		select * from tb_diary where d_regdate like #{date} and d_useridx=#{m_idx};
+	</select>
+	<select id="view" parameterType="map" resultMap="diaryList">
+		select * from tb_diary where d_idx=${d_idx}
+	</select>
+	<insert id="write" parameterType="map">
+		insert into tb_diary(d_useridx, d_mood,  d_title, d_content, d_open, d_sticker, d_img, d_latitude, d_longitude)
+		values (#{d_useridx}, #{d_mood},  #{d_title}, #{d_content}, #{d_open}, #{d_sticker}, #{d_img}, #{d_latitude}, #{d_longitude})
+	</insert>
+	
+	<update id="edit" parameterType="map">
+		update tb_diary set d_mood=#{d_mood}, d_title=#{d_title}, d_content=#{d_content}, d_open=#{d_open}, d_sticker=#{d_sticker}, d_img=#{d_img},
+		d_latitude=#{d_latitude}, d_longitude=#{d_longitude}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from tb_diary where d_idx=#{d_idx}
+	</delete>
+	
+	<select id="friends" parameterType="int" resultMap="diaryList">
+		select * from tb_diary where d_useridx=#{d_useridx} and (d_open=1 or d_open=0)
+	</select>
+	
+	<select id="getIdName" parameterType="int" resultType="map">
+		select m_userid, m_name from tb_member where m_idx=#{d_usesridx}
+	</select>
+	
+	<select id="suggest" parameterType="String" resultMap="diaryList">
+		select * from tb_diary where d_useridx not in(${value}) and d_open=0 order by d_idx desc
+	</select>
+	
+	<select id="search" parameterType="String" resultMap="diaryList">
+		select * from tb_diary where d_content like #{input} or d_title like #{input}
+	</select>
+	
+	<select id="searchUser" parameterType="String" resultType="int">
+		select m_idx from tb_member where m_userid like #{input} or m_name like #{input} or m_nickname=#{input} or m_interest=#{input}
+	</select>
+	
+	<select id="getAll" parameterType="int" resultMap="diaryList">
+		select * from tb_diary where d_useridx=#{i}
+	</select>
+</mapper>
